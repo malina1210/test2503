@@ -12,10 +12,29 @@ public class proj2503_1 {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         System.out.print("Input a number: ");
-        int num = in.nextInt(); //получаем число от пользователя
-        int result = square(num);
-        System.out.printf("Your number: %d \n", result);
+        String num = in.next();//nextInt(); //получаем число от пользователя
+        if (isInteger(num)) {
+            int result = square(Integer.parseInt(num));
+            System.out.printf("Your number: %d \n", result);
+        }
         in.close();
+    }
+
+    public static boolean isInteger(String s) {
+        System.out.println(String.format("Parsing string value: \"%s\"", s));
+
+        if (s == null || s.equals("")) {
+            System.out.println("Cannot parse the string since it either null or empty");
+            return false;
+        }
+
+        try {
+            int iVal = Integer.parseInt(s);
+            return true;
+        } catch (NumberFormatException e) {
+            System.out.println("Cannot parse the string to integer");
+        }
+        return false;
     }
 
     /**
